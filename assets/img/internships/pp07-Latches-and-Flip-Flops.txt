@@ -1,0 +1,353 @@
+                                        Summary
+           Latches
+
+          A latch is a temporary storage device that has two stable
+          states (bistable). It is a basic form of memory.
+          The S-R (Set-Reset) latch is the most basic type. It can be constructed
+          from NOR gates or NAND gates. With NOR gates, the latch responds
+          to active-HIGH inputs; with NAND gates, it responds to active-LOW
+          inputs.
+                          R                                  S
+                                           Q                                                Q
+
+
+
+
+                                           Q                                                Q
+                          S                                  R
+                         NOR Active-HIGH Latch                   NAND Active-LOW Latch
+
+
+Floyd, Digital Fundamentals, 10th ed       © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                       Summary
+          Latches
+          The active-HIGH S-R latch is in a stable (latched) condition
+          when both inputs are LOW.
+           Assume the latch is initially RESET
+           (Q = 0) and the inputs are at their
+           inactive level (0). To SET the latch
+           (Q = 1), a momentary HIGH signal
+           is applied to the S input while the R
+           remains LOW.
+                                                           0 R                            1
+                                                                                          0
+           To RESET the latch (Q = 0), a                                                      Q
+           momentary HIGH signal is                                                           Latch
+           applied to the R input while the S                                                 initially
+           remains LOW.                                                                       SET
+                                                                                          1
+                                                                                          0
+                                                                                              Q
+                                                           0 S
+
+Floyd, Digital Fundamentals, 10th ed    © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                       Summary
+          Latches
+          A gated latch is a variation on the basic latch.
+           The gated latch has an additional           S
+                                                                                Q
+           input, called enable (EN) that must
+           be HIGH in order for the latch to
+                                                      EN
+           respond to the S and R inputs.
+                       Show the Q output with                                   Q
+                       relation to the input signals. R
+                       Assume Q starts LOW.
+                       Keep in mind that S and R are only active when EN is HIGH.
+                                S
+                                R
+
+                              EN
+                               Q
+
+Floyd, Digital Fundamentals, 10th ed    © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                       Summary
+           Latches
+            The D latch is an variation of the S-R latch but combines
+            the S and R inputs into a single D input as shown:
+                D                                                        D                     Q
+                                              Q
+
+               EN                                                        EN
+
+                                              Q
+                                                                                                Q
+
+
+
+               A simple rule for the D latch is:
+                      Q follows D when the Enable is active.
+
+
+Floyd, Digital Fundamentals, 10th ed    © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                           Summary
+           Latches
+            The truth table for the D latch summarizes its operation. If
+            EN is LOW, then there is no change in the output and it is
+            latched.
+                                       Inputs     Outputs
+                                       D   EN     Q      Q      Comments
+                                       0   1      0      1       RESET
+                                       1   1      1      0       SET
+                                       X   0      Q0     Q0      No change
+
+
+
+
+Floyd, Digital Fundamentals, 10th ed            © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                       Summary
+           Latches                                                          D                    Q
+
+
+                                                                            EN
+                   Determine the Q output for the
+                                                                                                 Q
+                   D latch, given the inputs shown.
+
+                 D
+
+
+                EN
+
+                 Q
+
+
+
+               Notice that the Enable is not active during these times, so
+               the output is latched.
+
+Floyd, Digital Fundamentals, 10th ed    © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                                     Summary
+           Flip-flops
+               A flip-flop differs from a latch in the manner it changes
+               states. A flip-flop is a clocked device, in which only the
+               clock edge determines when a new bit is entered.
+               The active edge can be positive or negative.
+
+                                               D       Q                                 D         Q
+
+
+                                                 C                                         C
+
+
+            Dynamic                                    Q                                           Q
+            input
+            indicator                  (a) Positive edge-triggered            (b) Negative edge-triggered
+
+
+
+Floyd, Digital Fundamentals, 10th ed                    © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+    Internal Diagram of a JK Flip Flop
+
+
+
+
+Floyd, Digital Fundamentals, 10th ed   © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                                Summary
+           Flip-flops
+
+            The truth table for a positive-edge triggered D flip-flop
+            shows an up arrow to remind you that it is sensitive to its
+            D input only on the rising edge of the clock; otherwise it is
+            latched. The truth table for a negative-edge triggered D
+            flip-flop is identical except for the direction of the arrow.
+
+                   Inputs      Outputs                             Inputs       Outputs
+                  D   CLK      Q       Q   Comments               D     CLK     Q     Q      Comments
+                  1             1      0   SET                    1             1      0     SET
+                  0             0      1   RESET                  0             0      1     RESET
+
+
+                  (a) Positive-edge triggered                         (b) Negative-edge triggered
+
+
+Floyd, Digital Fundamentals, 10th ed               © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                                Summary
+           Flip-flops
+
+            The J-K flip-flop is more versatile than the D flip flop. In
+            addition to the clock input, it has two inputs, labeled J and
+            K. When both J and K = 1, the output changes states
+            (toggles) on the active clock edge (in this case, the rising
+            edge).
+                                           Inputs       Outputs
+                                       J K     CLK      Q       Q       Comments
+                                       0   0            Q0      Q0       No change
+                                       0   1            0       1        RESET
+                                       1   0            1       0        SET
+                                       1   1            Q0      Q0       Toggle
+
+
+
+Floyd, Digital Fundamentals, 10th ed                © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                            Summary
+           Flip-flops                                                                                           Q
+                                                                                             J
+
+                                                                                                 CLK
+                   Determine the Q output for the J-K
+                   flip-flop, given the inputs shown.                                        K                  Q
+
+                   Notice that the outputs change on the leading edge of the clock.
+
+
+                  Set                  Toggle              Set                     Latch
+
+           CLK
+
+
+              J
+
+              K
+
+              Q
+
+
+Floyd, Digital Fundamentals, 10th ed            © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                       Summary
+           Flip-flops
+
+            A D-flip-flop does not have a toggle mode like the J-K flip-
+            flop, but you can hardwire a toggle mode by connecting Q
+            back to D as shown. This is useful in some counters as you
+            will see in Chapter 8.
+                                                                             D                   Q
+
+             For example, if Q is LOW, Q is               CLK                 CLK
+             HIGH and the flip-flop will toggle
+             on the next clock edge. Because the                                                Q
+             flip-flop only changes on the active
+             edge, the output will only change
+             once for each clock pulse.
+                                                              D flip-flop hardwired for
+                                                              a toggle mode
+
+Floyd, Digital Fundamentals, 10th ed    © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                       Summary
+           Flip-flops
+
+             Synchronous and Asynchronous Inputs:
+             Synchronous inputs are transferred in the triggering edge
+             of the clock (for example the D or J-K inputs). Most flip-
+             flops have other inputs that are asynchronous, meaning
+                                                         PRE
+             they affect the output independent of the clock.
+             Two such inputs are normally labeled                           J                  Q
+             preset (PRE) and clear (CLR). These
+                                                                                CLK
+             inputs are usually active LOW. A J-K
+             flip flop with active LOW preset and                                              Q
+                                                                            K
+             CLR is shown.
+
+                                                                                CLR
+
+Floyd, Digital Fundamentals, 10th ed    © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                                 Summary                                          PRE
+
+
+
+           Flip-flops                                                                         J                  Q
+
+                                                                                                  CLK
+
+                    Determine the Q output for the J-K                                                           Q
+                                                                                              K
+                    flip-flop, given the inputs shown.
+                                                                                                  CLR
+                    Set                Toggle    Set           Reset            Toggle            Latch
+             CLK
+
+                J
+
+               K                           Set
+             PRE                                                                          Reset
+             CLR
+
+               Q
+
+Floyd, Digital Fundamentals, 10th ed               © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                               Summary
+           Flip-flop Characteristics
+          Propagation delay time is specified for the rising and
+          falling outputs. It is measured between the 50% level of the
+          clock to the 50% level of the output transition.
+               50% point on triggering edge
+
+
+          CLK                                                  CLK           50% point
+
+
+
+           Q                       50% point on LOW-to-          Q                  50% point on HIGH-to-
+                                   HIGH transition of Q                             LOW transition of Q
+
+                      tPLH                                                  tPHL
+
+
+           The typical propagation delay time for the 74AHC family (CMOS) is
+           4 ns. Even faster logic is available for specialized applications.
+
+Floyd, Digital Fundamentals, 10th ed               © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                                   Summary
+           Flip-flop Characteristics
+
+          Another propagation delay time specification is the time
+          required for an asynchronous input to cause a change in the
+          output. Again it is measured from the 50% levels. The
+          74AHC family has specified delay times under 5 ns.
+
+
+            PRE               50% point                        CLR               50% point
+
+
+             Q                         50% point               Q                        50% point
+
+
+                              tPHL                                               tPLH
+
+
+
+
+Floyd, Digital Fundamentals, 10th ed                © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                       Summary
+           Flip-flop Characteristics
+
+          Set-up time and hold time are times required before and
+          after the clock transition that data must be present to be
+          reliably clocked into the flip-flop.
+                                                   D
+           Setup time is the minimum
+           time for the data to be present     CLK
+           before the clock.
+                                                              Set-up time, ts
+
+                                                   D
+           Hold time is the minimum time
+           for the data to remain after the    CLK
+           clock.
+
+                                                               Hold time, tH
+
+Floyd, Digital Fundamentals, 10th ed     © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+                                            Summary
+           Flip-flop Applications
+
+           For frequency division, it is simple to use a flip-flop in
+           the toggle mode or to chain a series of toggle flip flops to
+           continue to divide by two.      HIGH         HIGH
+
+           One flip-flop will divide fin
+                                                                  J    QA                 J    QB           fout
+           by 2, two flip-flops will
+           divide fin by 4 (and so on).              fin              CLK                     CLK
+           A side benefit of frequency
+           division is that the output                            K                       K
+           has an exact 50% duty
+                                               fin
+           cycle.
+                               Waveforms:
+                                              fout
+
+Floyd, Digital Fundamentals, 10th ed         © 2009 Pearson Education, Upper Saddle River, NJ 07458. All Rights Reserved
+
